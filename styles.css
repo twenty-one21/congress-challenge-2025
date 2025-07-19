@@ -1,0 +1,37 @@
+header {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background-color: #ffffff; 
+    font-family: 'Inter', sans-serif;
+    padding: 1rem 1rem;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: medium;
+    margin: 0;
+    line-height: 1;
+}
+
+nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+#sign-in {
+    height: auto;
+    margin: 8.75px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
