@@ -45,3 +45,18 @@ h1 {
     justify-content: center;
     padding-top: 10px;
 }
+
+p {
+    font-size: 36px;
+    font-weight: medium;
+    display: flex; 
+    align-items: center;
+    font-family: Inter, sans-serif;
+    justify-content: center;
+}
+
+#get-started {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
