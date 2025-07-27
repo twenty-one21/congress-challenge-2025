@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate | Journals</title>
+    <link rel="stylesheet" href="../src/styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<header>
+    <h2>Mindmate</h2> 
+    <nav>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="videos.html">Videos</a>
+        <a href="resources.html">Resources</a>
+        <a id="sign-in" href="sign-in"><img src="../assets/Button.png" alt="Sign in"></a>
+    </nav>
+</header>
+<body>
+    <h1>My Journal</h1>
+
+    <form id="journalForm">
+        <input type="text" id="title" placeholder="Journal Title" required/>
+        <br />
+        <textarea id="content" rows="10" cols="50" placeholder="Write your thoughts here..."></textarea>
+        <br />
+        <button type="submit">Save Journal</button>
+    </form>
+
+    <ul id="journalList"></ul>
+
+    <script type = "module" src="../src/firebase.js"></script>
+    <script type = "module" src="../src/journal.js"></script>
+
+</body>
+</html>
