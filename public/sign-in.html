@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindmate | Sign In</title>
+    <link rel="stylesheet" href="../src/styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<header>
+    <h2>Mindmate</h2> 
+    <nav>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="videos.html">Videos</a>
+        <a href="resources.html">Resources</a>
+        <a id="sign-in" href="sign-in.html"><img src="../assets/Button.png" alt="Sign in"></a>
+    </nav>
+</header>
+<body>
+  <h1>Sign In</h1>
+  <button id="googleLogin">Sign in with Google</button>
+  <script type = "module" src="../src/firebase.js"></script>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button id="signupBtn">Sign Up</button>
+
+  <script type="module">
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+    const auth = getAuth();
+
+    document.getElementById("signupBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        alert("Signed up successfully! Welcome " + user.email);
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+  </script>
+</body>
+</html>

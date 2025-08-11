@@ -1,5 +1,9 @@
 import { db } from "./firebase.js";
 import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+
+const urlParams = new URLSearchParams(window.location.search);
+const userEmail = urlParams.get('email');
+
 const journalsRef = collection(db, "journals");
 
 document.getElementById("journalForm").addEventListener("submit", async (e) => {
@@ -7,12 +11,13 @@ document.getElementById("journalForm").addEventListener("submit", async (e) => {
 
   const title = document.getElementById("title").value.trim();
   const content = document.getElementById("content").value.trim();
-  if (!title || !content) return;
+  if (!title || !content || !userEmail) return;
 
   try {
     await addDoc(journalsRef, {
       title,
       content,
+      owner: userEmail,
       createdAt: new Date()
     });
     console.log("Journal entry added!");
