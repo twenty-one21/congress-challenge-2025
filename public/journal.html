@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-<header>
+<body>
+  <header>
     <a href="index.html" style="text-decoration: none; color: inherit;">
       <h2>Mindmate</h2>
     </a>
@@ -19,8 +20,7 @@
         <a href="resources.html">Resources</a>
         <a id="sign-in" href="sign-in"><img src="../assets/Button.png" alt="Sign in"></a>
     </nav>
-</header>
-<body>
+  </header>
     <h1>My Journal</h1>
 
     <form id="journalForm">
@@ -35,7 +35,7 @@
 
     <script type = "module" src="../src/firebase.js"></script>
     <script type = "module" src="../src/journal.js"></script>
-    <script type="module">
+<script type="module">
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
   const auth = getAuth();
