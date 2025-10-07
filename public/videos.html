@@ -1,76 +1,330 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>videos</title>
+  <title>Mindmate | Videos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../src/styles/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .controls {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .controls input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .controls button:hover {
+      background-color: #005bb5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .video-info {
+      padding: 10px;
+    }
+
+    .video-info h3 {
+      font-size: 16px;
+      margin: 5px 0;
+      color: #333;
+    }
+
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .modal iframe, .modal video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<header>
+<body>
+  <header>
     <a href="index.html" style="text-decoration: none; color: inherit;">
       <h2>Mindmate</h2>
     </a>
     <nav>
-        <a href="about.html">About</a>
-        <a href="journal.html">Journal</a>
-        <a href="videos.html">Videos</a>
-        <a href="resources.html">Resources</a>
-        <a id="sign-in" href="sign-in"><img src="../assets/Button.png" alt="Sign in"></a>
+      <a href="about.html">About</a>
+      <a href="journal.html">Journal</a>
+      <a href="videos.html">Videos</a>
+      <a href="resources.html">Resources</a>
+      <a id="sign-in" href="sign-in"><img src="../assets/Button.png" alt="Sign in"></a>
     </nav>
-</header>
-<body>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="video" accept="video/*" required />
-    <button type="submit">upload button</button>
-  </form>
+  </header>
 
-  <ul id="videoList"></ul>
+  <h1>Insert stylized title that says something descirptive</h1>
 
-  <script src="../src/uploadhandler.js"></script>
-  <script type="module">
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-  const auth = getAuth();
-  const signInLink = document.getElementById("sign-in");
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in → show profile/email
-      signInLink.innerHTML = `<span id="user-email">${user.email}</span>`;
-      signInLink.href = "#"; // prevent default
+  <div class="grid" id="videoGrid"></div>
 
-      // Optional: add a small dropdown for Sign Out
-      const dropdown = document.createElement("div");
-      dropdown.id = "user-dropdown";
-      dropdown.innerHTML = `<button id="signOutBtn">Sign Out</button>`;
-      dropdown.style.position = "absolute";
-      dropdown.style.background = "#fff";
-      dropdown.style.border = "1px solid #ccc";
-      dropdown.style.padding = "8px";
-      dropdown.style.marginTop = "5px";
-      dropdown.style.display = "none";
-      signInLink.parentElement.appendChild(dropdown);
+  <div class="modal" id="videoModal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">X</button>
+      <div id="playerContainer"></div>
+    </div>
+  </div>
 
-      // Show dropdown when email clicked
-      signInLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+  <script>
+    const videoGrid = document.getElementById('videoGrid');
+    const modal = document.getElementById('videoModal');
+    const playerContainer = document.getElementById('playerContainer');
+
+    let videos = [
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      },
+      {
+        title: 'Rick Astley - Never Gonna Give You Up',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+      }
+    ];
+
+    function renderVideos() {
+      videoGrid.innerHTML = '';
+      videos.forEach((video, index) => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+
+        const img = document.createElement('img');
+        img.className = 'thumbnail';
+        img.src = video.thumbnail || getThumbnail(video.url);
+        img.alt = video.title;
+        img.onclick = () => openModal(video.url);
+
+        const info = document.createElement('div');
+        info.className = 'video-info';
+
+        const title = document.createElement('h3');
+        title.textContent = video.title;
+
+        info.appendChild(title);
+
+        card.appendChild(img);
+        card.appendChild(info);
+
+        videoGrid.appendChild(card);
       });
-
-      // Sign out when button clicked
-      document.getElementById("signOutBtn").addEventListener("click", async () => {
-        await signOut(auth);
-        window.location.reload();
-      });
-
-    } else {
-      // User not signed in → show Sign In button
-      signInLink.innerHTML = '<img src="../assets/Button.png" alt="Sign in">';
-      signInLink.href = "sign-in.html";
     }
-  });
-</script>
+
+    function getThumbnail(url) {
+      if (url.includes('youtube.com') || url.includes('youtu.be')) {
+        const idMatch = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
+        if (idMatch) {
+          return `https://img.youtube.com/vi/${idMatch[1]}/hqdefault.jpg`;
+        }
+      }
+      return 'https://via.placeholder.com/300x180?text=No+Thumbnail';
+    }
+
+    function addVideo() {
+      const title = document.getElementById('title').value.trim();
+      const url = document.getElementById('url').value.trim();
+      const thumbnail = document.getElementById('thumbnail').value.trim();
+
+      if (!title || !url) {
+        alert('Please enter a title and video URL.');
+        return;
+      }
+
+      videos.push({ title, url, thumbnail });
+      renderVideos();
+
+      document.getElementById('title').value = '';
+      document.getElementById('url').value = '';
+      document.getElementById('thumbnail').value = '';
+    }
+
+    function removeVideo(index) {
+      if (confirm('Are you sure you want to remove this video?')) {
+        videos.splice(index, 1);
+        renderVideos();
+      }
+    }
+
+    function openModal(url) {
+      playerContainer.innerHTML = '';
+
+      if (url.includes('youtube.com') || url.includes('youtu.be')) {
+        const embedUrl = url.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/');
+        const iframe = document.createElement('iframe');
+        iframe.src = embedUrl;
+        iframe.width = '100%';
+        iframe.height = '450';
+        iframe.allowFullscreen = true;
+        playerContainer.appendChild(iframe);
+      } else {
+        const video = document.createElement('video');
+        video.src = url;
+        video.controls = true;
+        video.autoplay = true;
+        playerContainer.appendChild(video);
+      }
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      playerContainer.innerHTML = '';
+    }
+
+    window.onclick = (event) => {
+      if (event.target === modal) closeModal();
+    };
+
+    renderVideos();
+  </script>
 </body>
 </html>
