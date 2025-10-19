@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
+    .video-info h3 {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      font-size: 1.25em;
+      color: #222;
+      font-weight: 600;
+    }
     nav a {
       margin: 0 10px;
       text-decoration: none;
@@ -139,8 +146,8 @@
     </nav>
   </header>
 
-  <h1>Insert stylized title that says something descirptive</h1>
-
+  <h1>Videos</h1>
+  <p>Utlize these videos</p>
 
 
   <div class="grid" id="videoGrid"></div>
@@ -158,52 +165,58 @@
     const playerContainer = document.getElementById('playerContainer');
 
     let videos = [
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      },
-      {
-        title: 'Rick Astley - Never Gonna Give You Up',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
-      }
-    ];
+  {
+    title: 'Video 1',
+    url: 'https://www.youtube.com/watch?v=ZdyOwZ4_RnI',
+    thumbnail: 'https://img.youtube.com/vi/ZdyOwZ4_RnI/hqdefault.jpg'
+  },
+  {
+    title: 'Video 2',
+    url: 'https://www.youtube.com/watch?v=aAVGyRMS3gE',
+    thumbnail: 'https://img.youtube.com/vi/aAVGyRMS3gE/hqdefault.jpg'
+  },
+  {
+    title: 'Video 3',
+    url: 'https://www.youtube.com/watch?v=3VIL1L_ypMg',
+    thumbnail: 'https://img.youtube.com/vi/3VIL1L_ypMg/hqdefault.jpg'
+  },
+  {
+    title: 'Video 4',
+    url: 'https://www.youtube.com/watch?v=EpWfDdY4-vk',
+    thumbnail: 'https://img.youtube.com/vi/EpWfDdY4-vk/hqdefault.jpg'
+  },
+  {
+    title: 'Video 5',
+    url: 'https://www.youtube.com/watch?v=FEEmD7ngx6U',
+    thumbnail: 'https://img.youtube.com/vi/FEEmD7ngx6U/hqdefault.jpg'
+  },
+  {
+    title: 'Video 6',
+    url: 'https://www.youtube.com/watch?v=07JqktJGyyA',
+    thumbnail: 'https://img.youtube.com/vi/07JqktJGyyA/hqdefault.jpg'
+  },
+  {
+    title: 'Video 7',
+    url: 'https://www.youtube.com/watch?v=q_dKDerbVqI',
+    thumbnail: 'https://img.youtube.com/vi/q_dKDerbVqI/hqdefault.jpg'
+  },
+  {
+    title: 'Video 8',
+    url: 'https://www.youtube.com/watch?v=S1YV75Tms28',
+    thumbnail: 'https://img.youtube.com/vi/S1YV75Tms28/hqdefault.jpg'
+  },
+  {
+    title: 'Video 9',
+    url: 'https://www.youtube.com/watch?v=AxJo3GPvYDI',
+    thumbnail: 'https://img.youtube.com/vi/AxJo3GPvYDI/hqdefault.jpg'
+  },
+  {
+    title: 'Video 10',
+    url: 'https://www.youtube.com/watch?v=CarMrqTNypE',
+    thumbnail: 'https://img.youtube.com/vi/CarMrqTNypE/hqdefault.jpg'
+  }
+];
+
 
     function renderVideos() {
       videoGrid.innerHTML = '';
