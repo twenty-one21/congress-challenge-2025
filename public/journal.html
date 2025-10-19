@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindMate | Journals</title>
     <link rel="stylesheet" href="../src/styles/styles.css">
+    <link rel="stylesheet" href="../src/styles/journal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -21,20 +22,27 @@
         <a id="sign-in" href="sign-in"><img src="../assets/Button.png" alt="Sign in"></a>
     </nav>
   </header>
-    <h1>My Journal</h1>
+  <p><span id = "date"></span></p>
+  <script>
+    const today = new Date();
 
-    <form id="journalForm">
-        <input type="text" id="title" placeholder="Journal Title" required/>
-        <br />
-        <textarea id="content" rows="10" cols="50" placeholder="Write your thoughts here..."></textarea>
-        <br />
-        <button type="submit">Save Journal</button>
-    </form>
+    const formattedDate = today.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
 
-    <ul id="journalList"></ul>
+    // Insert it into the span element
+    document.getElementById("date").textContent = formattedDate;
+  </script>
+  <div class="journal-container">
+    <p id="journal-prompt">"What are three things you are grateful for today?"</p>
+    <textarea id="journal-entry" placeholder="Write your journal entry here..."></textarea>
+    <button id="save-entry">Save Entry</button>
+  </div>
 
-    <script type = "module" src="../src/firebase.js"></script>
-    <script type = "module" src="../src/journal.js"></script>
+  <script type = "module" src="../src/firebase.js"></script>
+  <script type = "module" src="../src/journal.js"></script>
 <script type="module">
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
