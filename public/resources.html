@@ -3,22 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindMate | Global Chat</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../src/styles/styles.css">
+    <link rel="stylesheet" href="../src/styles/chat.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+    <header>
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <h2>Mindmate</h2>
+        </a>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="journal.html">Journal</a>
+            <a href="videos.html">Videos</a>
+            <a href="resources.html">Resources</a>
+            <a id="sign-in" href="sign-in.html"><img src="../assets/Button.png" alt="Sign in"></a>
+        </nav>
+    </header>
+
     <div class="chat-container">
-        <h2>💬 Peer Reflection Space</h2>
+        <h2>Safe Reflection Space</h2>
         <p>Anonymous support circles based on mood themes. Share your reflections or encouragement!</p>
 
         <div class="chat-window" id="chat-window">
-            <div class="message ai-message">Welcome! This is a safe space 💛</div>
+            <div class="message ai-message">
+                <div class="anonymous-name">Anonymous Supporter</div>
+                <span>Welcome! This is a safe space for all!</span>
+            </div>
         </div>
 
         <input type="text" id="chat-input" placeholder="Type your message...">
         <button id="send-btn">Send</button>
     </div>
 
-    <script src="global-chat.js"></script>
+    <script src="../src/global-chat.js"></script>
 </body>
 </html>
