@@ -176,3 +176,51 @@ p {
     cursor: pointer;
     font-weight: 500;
 }
+.journal-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+textarea {
+    width: 95%; /* full width of container */
+    height: 150px;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    resize: vertical;
+    display: block;
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+#entries-list {
+    margin-top: 1rem;
+}
+
+.entry-card {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
