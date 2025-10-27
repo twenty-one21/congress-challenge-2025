@@ -317,4 +317,48 @@
     renderVideos();
   </script>
 </body>
+<script type="module" src="../src/firebase.js"></script>
+<script type="module">
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+  const auth = getAuth();
+  const signInLink = document.getElementById("sign-in");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in → show profile/email
+      signInLink.innerHTML = `<span id="user-email">${user.email}</span>`;
+      signInLink.href = "#"; // prevent default
+
+      // Optional: add a small dropdown for Sign Out
+      const dropdown = document.createElement("div");
+      dropdown.id = "user-dropdown";
+      dropdown.innerHTML = `<button id="signOutBtn">Sign Out</button>`;
+      dropdown.style.position = "absolute";
+      dropdown.style.background = "#fff";
+      dropdown.style.border = "1px solid #ccc";
+      dropdown.style.padding = "8px";
+      dropdown.style.marginTop = "5px";
+      dropdown.style.display = "none";
+      signInLink.parentElement.appendChild(dropdown);
+
+      // Show dropdown when email clicked
+      signInLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+      });
+
+      // Sign out when button clicked
+      document.getElementById("signOutBtn").addEventListener("click", async () => {
+        await signOut(auth);
+        window.location.reload();
+      });
+
+    } else {
+      // User not signed in → show Sign In button
+      signInLink.innerHTML = '<img src="../assets/Button.png" alt="Sign in">';
+      signInLink.href = "sign-in.html";
+    }
+  });
+</script>
 </html>
