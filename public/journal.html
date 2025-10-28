@@ -7,7 +7,78 @@
     <link rel="stylesheet" href="../src/styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 </head>
+<style>
+  .journal-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+
+  #journal-prompt {
+    font-family: "Dancing Script", cursive;
+    font-size: 1.8rem;
+    color: #000000;
+    background: linear-gradient(135deg, #f0faff, #ffffff);
+    border-left: 6px solid #000000;
+    padding: 20px 25px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #journal-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+  textarea#journal-entry {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto 25px auto; /* centers horizontally + adds bottom margin */
+    height: 160px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    resize: vertical;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+  }
+
+  textarea#journal-entry:focus {
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  button#save-entry {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  button#save-entry:hover {
+    background-color: #dddddd;
+    color: black;
+    transform: scale(1.05);
+  }
+</style>
+
 <body>
   <header>
     <a href="index.html" style="text-decoration: none; color: inherit;">
