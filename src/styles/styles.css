@@ -177,44 +177,80 @@ p {
     font-weight: 500;
 }
 .journal-container {
-    max-width: 700px;
+    max-width: 1200px;
     margin: 2rem auto;
     background: #f8f9fa;
-    padding: 2rem;
+    padding: 4rem;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     font-family: 'Arial', sans-serif;
 }
+#journal-prompt {
+    font-family: "Charm", cursive;
+    font-size: 1.8rem;
+    color: #000000;
+    background: linear-gradient(135deg, #f0faff, #ffffff);
+    border-left: 6px solid #000000;
+    padding: 20px 25px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#journal-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
 
 textarea {
-    width: 95%; /* full width of container */
-    height: 150px;
+    width: 100%; /* full width of container */
+    height: 250px;
     padding: 1rem;
     border-radius: 10px;
     border: 1px solid #ccc;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     resize: vertical;
     display: block;
 }
 
-button {
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 10px;
-    background: #4caf50;
+button#save-entry {
+    background-color: #000000;
     color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: 0.3s;
+    font-size: 1.1rem;
+    font-family: "Poppins", sans-serif;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-    background: #45a049;
+button#save-entry:hover {
+    background-color: #dddddd;
+    color: black;
+    transform: scale(1.05);
 }
-
 #entries-list {
     margin-top: 1rem;
+}
+.delete-btn {
+  background-color: #3d3d3d;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: "Poppins", sans-serif;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #a5a5a5;
+  transform: scale(1.05);
 }
 
 .entry-card {
