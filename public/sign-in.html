@@ -39,14 +39,14 @@
       try {
         // Try signing in first
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        alert("Signed in successfully! Welcome back " + userCredential.user.email);
+        //alert("Signed in successfully! Welcome back " + userCredential.user.email);
         window.location.href = "index.html";
       } catch (error) {
         if (error.code === "auth/invalid-credential") {
           // If user doesn't exist, create account
           try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            alert("Signed up successfully! Welcome " + userCredential.user.email);
+            //alert("Signed up successfully! Welcome " + userCredential.user.email);
             window.location.href = "index.html";
           } catch (signupError) {
             alert("Sign-up Error: " + signupError.message);
