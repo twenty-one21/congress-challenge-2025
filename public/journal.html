@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindMate | Journals</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="../src/styles/styles.css">
     <link rel="stylesheet" href="../src/styles/journal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
         <a href="journal.html">Journal</a>
         <a href="videos.html">Videos</a>
         <a href="resources.html">Resources</a>
-        <a id="sign-in" href="sign-in"><img src="/assets/Button.png"></a>
+        <a id="sign-in" href="sign-in"><img src="../assets/Button.png" alt="Sign in"></a>
     </nav>
   </header>
   <p><span id = "date"></span></p>
@@ -84,7 +84,7 @@
 
     } else {
       // User not signed in → show Sign In button
-      signInLink.innerHTML = '<img src="/assets/Button.png">';
+      signInLink.innerHTML = '<img src="../assets/Button.png" alt="Sign in">';
       signInLink.href = "sign-in.html";
     }
   });
