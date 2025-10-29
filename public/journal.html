@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindMate | Journals</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="../src/styles/styles.css">
     <link rel="stylesheet" href="../src/styles/journal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
+
 <body>
   <header>
     <a href="index.html" style="text-decoration: none; color: inherit;">
@@ -22,7 +26,7 @@
         <a id="sign-in" href="sign-in"><img src="/assets/Button.png"></a>
     </nav>
   </header>
-  <p><span id = "date"></span></p>
+  <p><span id = "date" style = "font-family: 'Inter', sans-serif; font-size: 40px; font-weight: 500;"></span></p>
   <script>
     const today = new Date();
 
@@ -32,17 +36,34 @@
       day: "numeric"
     });
 
-    // Insert it into the span element
     document.getElementById("date").textContent = formattedDate;
   </script>
   <div class="journal-container">
-    <p id="journal-prompt">"What are three things you are grateful for today?"</p>
+    <p id="journal-prompt"></p>
     <textarea id="journal-entry" placeholder="Write your journal entry here..."></textarea>
     <button id="save-entry">Save Entry</button>
 
     <h3>Your Past Entries</h3>
     <div id="entries-list"></div>
   </div>
+  <script>
+  const prompts = [
+    "What emotion stood out most today?",
+    "What’s one thing you’re proud of, no matter how small?",
+    "What’s something in your control right now?",
+    "What’s one negative thought you can challenge today?",
+    "What helped you cope or feel calm today?",
+    "What can you learn from a challenge you faced?",
+    "How can you show yourself kindness today?",
+    "What’s one thing that went better than expected?",
+    "What small step can you take toward feeling better?"
+  ];
+  const today_1 = new Date();
+  const index = today.getDate() % prompts.length;
+  const dailyPrompt = prompts[index];
+
+  document.getElementById("journal-prompt").textContent = `"${dailyPrompt}"`;
+</script>
 
   <script type = "module" src="../src/firebase.js"></script>
   <script type = "module" src="../src/journal.js"></script>
