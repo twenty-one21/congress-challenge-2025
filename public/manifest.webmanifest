@@ -1,0 +1,9 @@
+{
+  "name": "MindMate",
+  "short_name": "MindMate",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007aff",
+  "description": "Your daily mental wellness companion."
+}

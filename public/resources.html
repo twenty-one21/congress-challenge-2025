@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-    <link rel="stylesheet" href="../src/styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="../src/styles/chat.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="manifest" href="/manifest.webmanifest">
 </head>
 <body>
     <header>
@@ -19,7 +20,7 @@
             <a href="journal.html">Journal</a>
             <a href="videos.html">Videos</a>
             <a href="resources.html">Resources</a>
-            <a id="sign-in" href="sign-in.html"><img src="../assets/Button.png" alt="Sign in"></a>
+            <a id="sign-in" href="sign-in.html"><img src="/assets/Button.png" alt="Sign in"></a>
         </nav>
     </header>
 
@@ -39,8 +40,9 @@
     </div>
 
     <script src="../src/global-chat.js"></script>
+    <script src="/app.js"></script>
 </body>
-<script type="module" src="../src/firebase.js"></script>
+<script type="module" src="/firebase.js"></script>
 <script type="module">
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
@@ -83,5 +85,6 @@
       signInLink.href = "sign-in.html";
     }
   });
+  
 </script>
 </html>

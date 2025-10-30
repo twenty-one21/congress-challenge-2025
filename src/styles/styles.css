@@ -722,3 +722,26 @@ button#save-entry:hover {
     text-align: center;
     display: block;
 }
+
+#notify-button, 
+#test-push-button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007aff; /* Or your app's main color */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+#notify-button:hover, 
+#test-push-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
