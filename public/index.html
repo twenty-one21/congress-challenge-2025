@@ -26,8 +26,72 @@
 <main>
     <h1>Mindmate</h1>
     <p>Peace of mind,&nbsp;<span style="color: #0033FF;"> one check in at a time</span></p>
-    <a id="get-started" href="about.html"><img src="../assets/Button2.png" alt="Let's get started"/></a>
+    <a id="get-started" href="sign-in.html"><img src="../assets/Button2.png" alt="Let's get started"/></a>
 </main>
+
+<section class="stats-section">
+    <h2>The Mental Health Crisis We're Facing</h2>
+    <div class="stat-cards">
+        <div class="stat-card">
+            <h3>70%</h3>
+            <p>of teens say anxiety and depression are major problems among their peers</p>
+        </div>
+        <div class="stat-card">
+            <h3>1 in 3</h3>
+            <p>teenagers experience persistent feelings of sadness or hopelessness</p>
+        </div>
+        <div class="stat-card">
+            <h3>24/7</h3>
+            <p>accessible mental health support when you need it most</p>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <h2>How Mindmate Helps</h2>
+    <div class="features-grid">
+        <div class="feature">
+            <h3>Daily CBT Journaling</h3>
+            <p>Evidence-based prompts to help you reframe negative thoughts and build healthier mental patterns over time</p>
+        </div>
+        <div class="feature">
+            <h3>Expert Resources</h3>
+            <p>Curated video library with professional guidance on stress management, CBT techniques, and wellness practices</p>
+        </div>
+        <div class="feature">
+            <h3>Anonymous Support</h3>
+            <p>Connect with others in a safe space where you can share, support, and remember you're never alone</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2>Getting Started is Easy</h2>
+    <div class="steps">
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3>Sign Up</h3>
+            <p>Create your free, secure account in under a minute</p>
+        </div>
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3>Start Journaling</h3>
+            <p>Answer daily CBT prompts tailored to help you grow</p>
+        </div>
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3>Track Progress</h3>
+            <p>Watch your mental wellness improve over time with insights</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Ready to Prioritize Your Mental Health?</h2>
+    <p>Join our community taking control of their wellbeing, one check-in at a time</p>
+    <a href="sign-in.html" class="cta-button">Start Your Journey Today</a>
+</section>
+
 <script type="module" src="../src/firebase.js"></script>
 <script type="module">
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
@@ -37,11 +101,9 @@
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in → show profile/email
       signInLink.innerHTML = `<span id="user-email">${user.email}</span>`;
-      signInLink.href = "#"; // prevent default
+      signInLink.href = "#";
 
-      // Optional: add a small dropdown for Sign Out
       const dropdown = document.createElement("div");
       dropdown.id = "user-dropdown";
       dropdown.innerHTML = `<button id="signOutBtn">Sign Out</button>`;
@@ -53,20 +115,17 @@
       dropdown.style.display = "none";
       signInLink.parentElement.appendChild(dropdown);
 
-      // Show dropdown when email clicked
       signInLink.addEventListener("click", (e) => {
         e.preventDefault();
         dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
       });
 
-      // Sign out when button clicked
       document.getElementById("signOutBtn").addEventListener("click", async () => {
         await signOut(auth);
         window.location.reload();
       });
 
     } else {
-      // User not signed in → show Sign In button
       signInLink.innerHTML = '<img src="../assets/Button.png" alt="Sign in">';
       signInLink.href = "sign-in.html";
     }
